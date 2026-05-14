@@ -213,8 +213,10 @@ export function App() {
         {/* Seção do Leaderboard Oficial */}
         <Leaderboard />
 
-        {/* Painel Interno de Teste/Simulação de Admin Service_role */}
-        <AdminPanel />
+        {/* Painel Interno de Teste/Simulação de Admin Service_role oculto por padrão */}
+        {typeof window !== 'undefined' && window.location.search.includes('admin=true') && (
+          <AdminPanel />
+        )}
 
       </main>
 
