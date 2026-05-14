@@ -2,7 +2,8 @@ import { createClient } from '@supabase/supabase-js';
 
 // Conexão com o Supabase prontas para produção
 // Caso o usuário preencha as credenciais reais no arquivo .env local, o app se conecta instantaneamente às tabelas do PostgreSQL via REST e Realtime.
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://sua-url-do-projeto.supabase.co';
+const rawUrl = import.meta.env.VITE_SUPABASE_URL || 'https://sua-url-do-projeto.supabase.co';
+const supabaseUrl = rawUrl.replace(/\/rest\/v1\/?$/, '').replace(/\/$/, '');
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.dummy.key';
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
