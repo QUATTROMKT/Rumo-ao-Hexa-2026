@@ -1,16 +1,14 @@
 import { groups, teamsData } from '@/mocks/world-cup-2026';
 
 export function GroupsCarousel() {
-  // Simulação de pontos reais e posições dinâmicas para o MVP
+  // Tabela zerada aguardando o início dos jogos oficiais da Copa
   const getMockStandings = (groupLetter: string, teams: string[]) => {
-    // Definimos pontos lógicos para demonstrar a classificação real
-    const basePoints = groupLetter === 'A' ? [7, 4, 3, 1] : [6, 4, 3, 0];
-    return teams.map((teamCode, index) => ({
+    return teams.map((teamCode) => ({
       code: teamCode,
       ...teamsData[teamCode],
-      points: basePoints[index] || 0,
-      played: basePoints[index] > 3 ? 3 : 2,
-      goalsDiff: basePoints[index] - 1
+      points: 0,
+      played: 0,
+      goalsDiff: 0
     }));
   };
 

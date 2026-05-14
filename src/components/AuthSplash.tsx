@@ -91,7 +91,7 @@ export function AuthSplash() {
         <div className="inline-flex items-center gap-1.5 bg-bg-secondary/80 border border-border-gold/30 px-3 py-1 rounded-full backdrop-blur-md">
           <Sparkles className="w-3.5 h-3.5 text-accent-yellow animate-spin" />
           <span className="text-[10px] font-display tracking-widest text-border-gold uppercase font-bold">
-            ESTÉTICA BRASIL MILITAR METÁLICO PREMIUM
+            🏆 O BOLÃO OFICIAL DA COPA DO MUNDO 2026
           </span>
         </div>
       </div>
@@ -115,7 +115,7 @@ export function AuthSplash() {
             </div>
 
             <p className="text-xs text-text-primary/90 italic font-serif leading-relaxed mb-4 px-2">
-              "O bolão mais bonito e mais justo do Mundial. Você palpita, a gente cuida do resto."
+              "Seu bolão da copa é aqui!"
             </p>
 
             {feedbackError && (

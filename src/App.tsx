@@ -46,14 +46,29 @@ export function App() {
     return true; // 'all'
   });
 
-  // Agrupamento de jogos por Data / Identificador Visual
+  // Agrupamento de jogos por Data / Identificador Visual real
   const groupedMatches = filteredMatches.reduce((acc, match) => {
-    let dateLabel = "Fase Inicial";
-    if (match.startsAt.includes('06-12')) dateLabel = "Hoje • Sex 12 Jun";
-    else if (match.startsAt.includes('06-11')) dateLabel = "Ontem • Qui 11 Jun";
-    else if (match.startsAt.includes('06-13')) dateLabel = "Amanhã • Sáb 13 Jun";
-    else if (match.stage === 'final') dateLabel = "A Grande Final • Dom 19 Jul";
-    else dateLabel = `Mata-Mata • ${match.stage.toUpperCase()}`;
+    let dateLabel = "";
+    try {
+      const d = new Date(match.startsAt);
+      const options: Intl.DateTimeFormatOptions = { weekday: 'short', day: '2-digit', month: 'short' };
+      const formatted = d.toLocaleDateString('pt-BR', options).replace(/\./g, '').toUpperCase();
+      
+      if (match.stage !== 'group') {
+        const stageNames: Record<string, string> = {
+          r16: 'OITAVAS DE FINAL',
+          qf: 'QUARTAS DE FINAL',
+          sf: 'SEMIFINAL',
+          third: 'DISPUTA DO 3º LUGAR',
+          final: 'A GRANDE FINAL'
+        };
+        dateLabel = `${stageNames[match.stage] || match.stage.toUpperCase()} • ${formatted}`;
+      } else {
+        dateLabel = `FASE DE GRUPOS • ${formatted}`;
+      }
+    } catch {
+      dateLabel = match.stage === 'group' ? 'FASE DE GRUPOS' : `MATA-MATA • ${match.stage.toUpperCase()}`;
+    }
 
     if (!acc[dateLabel]) acc[dateLabel] = [];
     acc[dateLabel].push(match);

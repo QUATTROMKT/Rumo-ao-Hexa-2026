@@ -133,9 +133,7 @@ export const matches: Match[] = [
     stadium: 'Estadio Azteca',
     city: 'Cidade do México',
     multiplier: 1.0,
-    status: 'finished',
-    scoreA: 3,
-    scoreB: 1
+    status: 'scheduled'
   },
   // Jogos do Grupo do Brasil (Grupo C)
   {

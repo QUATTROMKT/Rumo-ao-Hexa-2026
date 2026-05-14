@@ -22,7 +22,7 @@ export function Header() {
               </span>
             </h1>
             <p className="text-[10px] font-sans text-text-secondary hidden sm:block">
-              O bolão mais bonito e mais justo do Mundial.
+              Seu bolão da copa é aqui!
             </p>
           </div>
         </div>
